@@ -1,0 +1,38 @@
+body{
+    background-color: #1a1a1a !important;
+}
+.nav-link{
+    color: #fffd00 !important;
+}
+hr{
+    color: #fffd00 !important;
+    opacity: 1 !important;
+}
+h1{
+    color: white !important;
+}
+p{
+color: #636363!important;
+}
+.Text{
+    margin: auto;
+    text-align: center;
+    width: 60%;
+}
+.Laptop{
+    width: 80% !important;
+    height: 80% !important;
+    margin: auto;
+}
+.card-body{
+    background-color: #1a1a1a !important;
+    text-align: center;
+}
+.card{
+    padding: 30px 30px 30px 30px;
+    margin: 10px 10px 10px 10px;
+    background-color: #1a1a1a !important;
+}
+h2{
+    color: white !important;
+}
