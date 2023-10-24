@@ -67,7 +67,7 @@ h2{
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-input[type="text"], input[type="password"], input[type="email"] {
+input[type="text"], input[type="password"], input[type="email"], input[type="message"] {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -106,5 +106,9 @@ input[type="text"], input[type="password"], input[type="email"] {
 }
 .table{
     width: 40% !important;
+    margin: auto;
+}
+.conatctphoto{
+    display: flex;
     margin: auto;
 }

@@ -25,7 +25,7 @@
                     <li><a href="index.html" class="nav-link px-2  underline">Home</a></li>
                     <li><a href="Aboutus.html" class="nav-link px-2  underline">About us</a></li>
                     <li><a href="Appointment.php" class="nav-link px-2  underline">Appointment</a></li>
-                    <li><a href="Contact.html" class="nav-link px-2  underline">Contact</a></li>
+                    <li><a href="Contact.php" class="nav-link px-2  underline">Contact</a></li>
                 </ul>
                 <div class="col-md-3 text-end">
                     <a href="login.php">

@@ -1,27 +1,3 @@
-<?php
-include('submit_appointment.php');
-
-$sql_appointments = "SELECT * FROM users";
-$result_appointments = $conn->query($sql_appointments);
-
-?>
-<?php  
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "international";
-
-// Create a connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check the connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-$sql_messages = "SELECT * FROM contact";
-$result_messages = $conn->query($sql_messages);
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,67 +41,84 @@ $result_messages = $conn->query($sql_messages);
         </div>
     </header>
 
-    <h2 style="text-align: center;">All Appointments</h2>
-    <hr style="margin: auto; width: 40%;">
+    <div class="container containerform">
+        <h2 class="my-4">Contact</h2>
+        <hr>
+    <form action="" method="post">
+    <div class="form-group">
+    <label for="name"><h3>Name:</h3></label>
+    <input type="text" id="name" name="name" required>
     <br>
-    <?php if ($result_appointments->num_rows > 0): ?>
-        <table border="1" class="table table-dark table-hover">
-            <tr>
-                <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Phone Number</th>
-                <th>Date</th>
-                <th>Time</th>
-            </tr>
-            <?php while($row = $result_appointments->fetch_assoc()): ?>
-                <tr>
-                    <td><?php echo $row["id"]; ?></td>
-                    <td><?php echo $row["first_name"]; ?></td>
-                    <td><?php echo $row["last_name"]; ?></td>
-                    <td><?php echo $row["email"]; ?></td>
-                    <td><?php echo $row["phone_number"]; ?></td>
-                    <td><?php echo $row["appointment_date"]; ?></td>
-                    <td><?php echo $row["appointment_time"]; ?></td>
-                </tr>
-            <?php endwhile; ?>
-        </table>
-    <?php else: ?>
-        <p>No appointments found.</p>
-    <?php endif; ?>
-    <?php $conn->close(); ?>
-
-
-
-    <h2 style="text-align: center;">All Messages</h2>
-    <hr style="margin: auto; width: 40%;">
+</div>
+<div class="form-group">
+    <label for="email"><h3>Email:</h3></label>
+    <input type="email" id="email" name="email" required>
     <br>
-<?php if ($result_messages->num_rows > 0): ?>
-    <table border="1" class="table table-dark table-hover">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Message</th>
-        </tr>
-        <?php while($row = $result_messages->fetch_assoc()): ?>
-            <tr>
-                <td><?php echo $row["id"]; ?></td>
-                <td><?php echo $row["name"]; ?></td>
-                <td><?php echo $row["email"]; ?></td>
-                <td><?php echo $row["message"]; ?></td>
-            </tr>
-        <?php endwhile; ?>
-    </table>
-<?php else: ?>
-    <p>No messages found.</p>
-<?php endif; ?>
+</div>
+<div class="form-group">
+    <label for="message"><h3>Message:</h3></label>
+    <input type="message" id="message" name="message" required></input>
+    <br>
+</div>
+<br>
+    <button type="submit" class="btnform">Submit</button>
+  </form>
 
 
+  <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-       <!-- footer -->
-       <div class="container">
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "international";
+
+  // Create a connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+
+  // Check the connection
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+
+
+  $name = ($_POST['name']);
+  $email = ($_POST['email']);
+  $message = ($_POST['message']);
+
+ 
+  $sql = "INSERT INTO contact (name, email, message) VALUES ('$name', '$email', '$message')";
+  if ($conn->query($sql) === TRUE) {
+    echo '<span class="span"><p>Message sent succesfully!</p></span>';
+  } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+
+  // Close the connection
+  $conn->close();
+} 
+?>
+<br>
+   <hr style="margin: auto;">  
+   <br> 
+
+   <img class="conatctphoto" src="img/email.png" class="bi" width="50" height="50">
+    <br>
+    <p>Email: info@internationalpassphoto.nl</p>
+<br>
+    <img class="conatctphoto" src="img/phone.png" class="bi" width="50" height="50">
+    <br>
+    <p>Phone Number: +31657141596</p>
+<br>
+    <img class="conatctphoto" src="img/location.png" class="bi" width="50" height="50">
+    <br>
+    <p>Location: Herenstraat, 1015 CB Amsterdam</p>
+
+</div>
+  <br><br>
+
+        <!-- footer -->
+        <div class="container">
             <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
                 <div class="col-md-4 d-flex align-items-center">
                     <a href="index.html" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
