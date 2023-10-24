@@ -11,8 +11,15 @@ hr{
 h1{
     color: white !important;
 }
+.span{
+    color: white !important;
+    text-align: center;
+}
 p{
 color: #636363!important;
+}
+h3{
+    color: #636363 !important;
 }
 .Text{
     margin: auto;
@@ -35,4 +42,69 @@ color: #636363!important;
 }
 h2{
     color: white !important;
+}
+.login{
+    padding: 15px 15px 15px 15px;
+    text-align: center;
+}
+.btn-outline-dark {
+    --bs-btn-color: #fffd00 !important;
+    --bs-btn-border-color: #fffd00 !important;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #2b2b2b !important;
+    --bs-btn-hover-border-color: #212529;
+    --bs-btn-focus-shadow-rgb: 33,37,41;
+}
+.containerlogin {
+    max-width: 400px !important;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.form {
+    background: #2b2b2b;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+input[type="text"], input[type="password"], input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+.btnlogin{
+    background: #1a1a1a;
+    color: #fffd00;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.buttona {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+  .containerform{
+    text-align: center !important;
+    width: 50% !important;
+  }
+
+  .form-control{
+    text-align: center !important;
+  }
+.btnform{
+    background: #2b2b2b;
+    color: #fffd00;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.table{
+    width: 40% !important;
+    margin: auto;
 }
