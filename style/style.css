@@ -112,3 +112,8 @@ input[type="text"], input[type="password"], input[type="email"], input[type="mes
     display: flex;
     margin: auto;
 }
+.carousel {
+    position: relative;
+    width: 90%;
+    margin: auto;
+}
