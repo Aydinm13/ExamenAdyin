@@ -1,6 +1,6 @@
 <?php
 include('submit_appointment.php');
-
+// Get data from 'users' table
 $sql_appointments = "SELECT * FROM users";
 $result_appointments = $conn->query($sql_appointments);
 
@@ -12,13 +12,14 @@ $username = "root";
 $password = "";
 $dbname = "international";
 
-// Create a connection
+// Connect to database
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check the connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
+// Get data from 'contact' table
 $sql_messages = "SELECT * FROM contact";
 $result_messages = $conn->query($sql_messages);
 ?>
@@ -64,7 +65,7 @@ $result_messages = $conn->query($sql_messages);
             </div>
         </div>
     </header>
-
+<!-- table for appointment information -->
     <h2 style="text-align: center;">Appointments</h2>
     <hr style="margin: auto; width: 40%;">
     <br>
@@ -79,6 +80,7 @@ $result_messages = $conn->query($sql_messages);
                 <th>Date</th>
                 <th>Time</th>
             </tr>
+             <!-- Loop to show all data -->
             <?php while($row = $result_appointments->fetch_assoc()): ?>
                 <tr>
                     <td><?php echo $row["id"]; ?></td>
@@ -95,9 +97,7 @@ $result_messages = $conn->query($sql_messages);
         <p>No appointments found.</p>
     <?php endif; ?>
     <?php $conn->close(); ?>
-
-
-
+<!-- messages information -->
     <h2 style="text-align: center;">Messages</h2>
     <hr style="margin: auto; width: 40%;">
     <br>
@@ -109,6 +109,7 @@ $result_messages = $conn->query($sql_messages);
             <th>Email</th>
             <th>Message</th>
         </tr>
+           <!-- Loop to show all data -->
         <?php while($row = $result_messages->fetch_assoc()): ?>
             <tr>
                 <td><?php echo $row["id"]; ?></td>
@@ -121,9 +122,6 @@ $result_messages = $conn->query($sql_messages);
 <?php else: ?>
     <p>No messages found.</p>
 <?php endif; ?>
-
-
-
        <!-- footer -->
        <div class="container">
             <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">

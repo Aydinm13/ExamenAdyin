@@ -35,30 +35,29 @@
             </div>
         </div>
     </header>   
-  
-    <div class="containerlogin">
-        
+  <!-- login form  -->
+    <div class="containerlogin">     
         <h1>Login</h1>
         <div class="form">
             <form  action="" method="post">
             <input type="text" name="username" placeholder="Username">
             <input type="password" name="password" placeholder="Password">
             <button type="submit" class="btnlogin" >Login</button>
-        </form>
-        
+        </form>   
         </div>
-
     </div>
    <?php
+   // Connect to database
 include('db.php');
-
+// Check if the form was submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+     // Get username and password from form
     $username = $conn->real_escape_string($_POST['username']);
     $password = $_POST['password'];
-
+  // Look for user in database
     $sql = "SELECT * FROM users WHERE username = '$username'";
     $result = $conn->query($sql);
-
+    // Check if user was found
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         if (password_verify($password, $row['password']) && $row['id'] == 1 ){ 
@@ -74,9 +73,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo '<span class="span"><p>Username does not exist</p><span>';
     }
 }
-
+// Close the database connection
 $conn->close();
 ?>
+<!-- footer -->
       <br><br><br><br><br><br><br>
       <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
@@ -106,6 +106,5 @@ $conn->close();
         </footer>
     </div>
 </body>
-
 </html>
 

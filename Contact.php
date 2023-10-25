@@ -40,7 +40,7 @@
             </div>
         </div>
     </header>
-
+<!-- contact form -->
     <div class="container containerform">
         <h2 class="my-4">Contact</h2>
         <hr>
@@ -62,10 +62,9 @@
 </div>
 <br>
     <button type="submit" class="btnform">Submit</button>
-  </form>
-
-
+</form>
   <?php
+  // Check if form is sent
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $servername = "localhost";
@@ -73,20 +72,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $password = "";
   $dbname = "international";
 
-  // Create a connection
+// Make a connection
   $conn = new mysqli($servername, $username, $password, $dbname);
 
   // Check the connection
   if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
   }
-
-
+  // Get data from form
   $name = ($_POST['name']);
   $email = ($_POST['email']);
   $message = ($_POST['message']);
 
- 
+ // add data to database
   $sql = "INSERT INTO contact (name, email, message) VALUES ('$name', '$email', '$message')";
   if ($conn->query($sql) === TRUE) {
     echo '<span class="span"><p>Message sent succesfully!</p></span>';
@@ -98,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $conn->close();
 } 
 ?>
-<br>
+<!-- information about company -->
    <hr style="margin: auto;">  
    <br> 
 
@@ -113,10 +111,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <img class="conatctphoto" src="img/location.png" class="bi" width="50" height="50">
     <br>
     <p>Location: Herenstraat, 1015 CB Amsterdam</p>
-
 </div>
   <br><br>
-
         <!-- footer -->
         <div class="container">
             <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
@@ -146,5 +142,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </footer>
         </div>
 </body>
-
 </html>

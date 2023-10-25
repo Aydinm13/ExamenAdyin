@@ -35,7 +35,7 @@
             </div>
         </div>
     </header>
-
+<!-- sign up form -->
     <div class="containerlogin">
         <h1>Sign Up</h1>
         <div class="form">
@@ -49,13 +49,15 @@
         </div>
     </div>
     <?php
+    // Connect to database
 include('db.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $conn->real_escape_string($_POST['username']);
-    $email = $conn->real_escape_string($_POST['email']);
+    $username = ($_POST['username']);
+    $email =($_POST['email']);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
+// Create an SQL query to insert the new user into the 'users' table
     $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
 
     if ($conn->query($sql) === TRUE) {
@@ -69,7 +71,7 @@ $conn->close();
 ?>
 
 
-
+<!-- footer  -->
 <br><br><br><br><br><br><br>
     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">

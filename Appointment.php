@@ -9,9 +9,7 @@
     <script src="script/script.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
 </head>
-
 <body>
     <!-- Menu -->
     <header class="p-3 text-bg-dark" style=" background-color: #1a1a1a !important;">
@@ -38,7 +36,7 @@
             </div>
         </div>
     </header>
-
+<!-- Appointment form -->
     <div class="container containerform">
         <h2 class="my-4">Appointment Booking</h2>
         <hr>
@@ -78,7 +76,6 @@
                     <h3>Time:</h3>
                 </label>
                 <input type="time" name="appointment_time" class="form-control" required min="09:00" max="18:00"><br>
-
             </div>
             <input type="submit" value="Submit" class="btnform">
         </form>
@@ -86,31 +83,28 @@
     </div>
 <?php 
 include('submit_appointment.php');
-
+// Check if form is sent
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $first_name = $conn->real_escape_string($_POST["first_name"]);
-    $last_name = $conn->real_escape_string($_POST["last_name"]);
-    $email = $conn->real_escape_string($_POST["email"]);
-    $phone_number = $conn->real_escape_string($_POST["phone_number"]);
-    $appointment_date = $conn->real_escape_string($_POST["appointment_date"]);
-    $appointment_time = $conn->real_escape_string($_POST["appointment_time"]);
-
-    
+       // Get data from form
+    $first_name = ($_POST["first_name"]);
+    $last_name = ($_POST["last_name"]);
+    $email = ($_POST["email"]);
+    $phone_number = ($_POST["phone_number"]);
+    $appointment_date = ($_POST["appointment_date"]);
+    $appointment_time = ($_POST["appointment_time"]);
+ // data to database
         $sql = "INSERT INTO users (first_name, last_name, email, phone_number, appointment_date, appointment_time)
         VALUES ('$first_name', '$last_name', '$email', '$phone_number', '$appointment_date', '$appointment_time')";
-
+  // Run SQL
         if ($conn->query($sql) === TRUE) {
             echo '<span class="span"><p>New appointment created successfully </p></span>';
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
     } 
-
+// Close the connection
 $conn->close();
 ?>
-
-
-
     <!-- footer -->
     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
@@ -122,7 +116,6 @@ $conn->close();
                 <span class="mb-3 mb-md-0 text-body-secondary" style="color: #fffd00 !important;">&copy; 2023
                     International Passphoto</span>
             </div>
-
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
                 <li class="ms-3"><a class="text-body-secondary" href="#"><img src="img/Twitter.png" class="bi"
                             width="24" height="24">
@@ -140,5 +133,4 @@ $conn->close();
         </footer>
     </div>
 </body>
-
 </html>
