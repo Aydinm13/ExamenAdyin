@@ -52,7 +52,7 @@ include('db.php');
 // Check if the form was submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      // Get username and password from form
-    $username = $conn->real_escape_string($_POST['username']);
+    $username = ($_POST['username']);
     $password = $_POST['password'];
   // Look for user in database
     $sql = "SELECT * FROM users WHERE username = '$username'";
