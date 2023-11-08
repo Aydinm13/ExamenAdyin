@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>International Passphoto</title>
     <link rel="stylesheet" href="style/style.css">
-    <script src="script/script.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
    
@@ -42,7 +41,7 @@
             <form action="signup.php" method="post">
             <input type="text" name="username" placeholder="Username" required>
             <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="password" placeholder="Password" required minlength="8">
             <button type="submit" class="btnlogin">Sign Up</button>
         </form>
        
@@ -56,7 +55,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = ($_POST['username']);
     $email =($_POST['email']);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
+//een SQL-query om de gebruikersnaam te controleren
+    $query = "SELECT * FROM users WHERE username = '$username'";
+    //de query uitvoeren
+    $result = $conn->query($query);
+// Controleer of de gebruikersnaam al bestaat
+    if ($result->num_rows > 0) {
+        echo '<span class="span"><p>Gebruikersnaam is al in gebruik. Kies een andere gebruikersnaam.</p>';
+    } else {
 // Create an SQL query to insert the new user into the 'users' table
     $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
 
@@ -65,6 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
+}
 }
 
 $conn->close();

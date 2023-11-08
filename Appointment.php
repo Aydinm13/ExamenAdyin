@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InternationalPassphoto</title>
     <link rel="stylesheet" href="style/style.css">
-    <script src="script/script.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
@@ -63,13 +62,13 @@
                 <label for="phone_number">
                     <h3>Phone Number:</h3>
                 </label>
-                <input type="text" name="phone_number" class="form-control" required><br>
+                <input type="number" name="phone_number" class="form-control" required><br>
             </div>
             <div class="form-group">
                 <label for="appointment_date">
                     <h3>Date:</h3>
                 </label>
-                <input type="date" name="appointment_date" class="form-control" required><br>
+                <input type="date" name="appointment_date" class="form-control" required min="<?php echo date("Y-m-d"); ?>"><br>
             </div>
             <div class="form-group">
                 <label for="appointment_time">
